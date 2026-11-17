@@ -131,8 +131,8 @@ public class MarketWizard : BaseSettingsPlugin<MarketWizardSettings>
                             (Color.Green with { A = 60 }).ToImgui());
                     }
 
-                    drawList.AddPolyline(ref leftPointsXy[0], leftPointsXy.Length, Color.Red.ToImgui(), ImDrawFlags.Closed, 1);
-                    drawList.AddPolyline(ref rightPointsXy[0], rightPointsXy.Length, Color.Green.ToImgui(), ImDrawFlags.Closed, 1);
+                    drawList.AddPolyline(in leftPointsXy[0], leftPointsXy.Length, Color.Red.ToImgui(), 1, ImDrawFlags.Closed | ImDrawFlags.StrokeLegacy);
+                    drawList.AddPolyline(in rightPointsXy[0], rightPointsXy.Length, Color.Green.ToImgui(), 1, ImDrawFlags.Closed | ImDrawFlags.StrokeLegacy);
 
 
                     var lineDict = new Dictionary<int, float>();
@@ -277,6 +277,8 @@ public class MarketWizard : BaseSettingsPlugin<MarketWizardSettings>
                     var x => x.ToString("F0") + "%%"
                 }}");
             }
+
+            ImGui.End();
         }
     }
 
